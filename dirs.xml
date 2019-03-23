@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<directorios>
+<default>
+  <dir tipo="Base">Correctivos</dir>
+  <dir tipo="Base">Documentacion</dir>
+  <dir tipo="Base">Evolutivos</dir>
+  <dir tipo="Base">Produccion</dir>
+  <dir tipo="Full">Misc</dir>
+  <dir tipo="Full">Notas</dir>
+</default>
+<app>
+  <dir tipo="Base">Correctivos</dir>
+  <dir tipo="Base">Documentacion</dir>
+  <dir tipo="Base">Evolutivos</dir>
+  <dir tipo="Base">Produccion</dir>
+  <dir tipo="Full">Misc</dir>
+  <dir tipo="Full">Notas</dir>
+</app>
+<project>
+  <dir tipo="Base">Desarrollo</dir>
+  <dir tipo="Full">Desarrollo\scripts</dir>
+  <dir tipo="Base">Documentacion</dir>
+  <dir tipo="Base">PAP</dir>
+  <dir tipo="Base">Pruebas</dir>
+  <dir tipo="Full">Misc</dir>
+  <dir tipo="Full">Notas</dir>
+</project>
+</directorios>
