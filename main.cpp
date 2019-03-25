@@ -13,7 +13,7 @@ static const char USAGE[] =
 R"(Example usage for Folder App Maker
 
 Usage:
-  folderappmaker  [--type=<struct>] [--base=<dir>] <name> [--full] [--verbose | --test]
+  folderappmaker  [--type=<struct>] [--base=<dir>] <name> [--full] [--verbose | --test] [--append]
   folderappmaker  (-h | --help)
   folderappmaker  --version
 
@@ -24,6 +24,7 @@ Options:
   -r --base=<ruta>  Path base for the structure [detault: current path].
   -t --test  Show structure on screen without creating it.
   -s --type=<struct>  Indicate the type of structure to use of the config file [default if null].
+  -a --append  Append the structure to the existing path.
   --version     Show version.
 
 Ejemplos
@@ -72,7 +73,7 @@ int main(int argc, const char** argv)
     map<string, docopt::value> args = docopt::docopt(USAGE,
                                                   { argv + 1, argv + argc },
                                                   true,               // show help if requested
-                                                  "Folder App Maker 0.2.0");  // version string
+                                                  "Folder App Maker 0.3.0");  // version string
 
 /*    for(auto const& arg : args) {
         cout << arg.first << ": " << arg.second << endl;
@@ -100,7 +101,7 @@ int main(int argc, const char** argv)
     dirPadre = dirBase + "\\" + args["<name>"].asString();
 
     //Se verifica existencia de directorio padre
-    if(dirExists(dirPadre.c_str())==1 && args["--test"].asBool() == false)
+    if(dirExists(dirPadre.c_str())==1 && args["--test"].asBool() == false && args["--append"].asBool() == false)
     {
         cout<<dirPadre<<endl<<"!Directorio padre existente!, se aborta proceso.";
         return 0;
