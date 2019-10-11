@@ -16,6 +16,7 @@ Usage:
   folderappmaker  [--type=<struct>] [--base=<dir>] <name> [--full] [--verbose | --test] [--append]
   folderappmaker  (-h | --help)
   folderappmaker  --version
+  folderappmaker  --config
 
 Options:
   -f --full        Create full structure.
@@ -26,6 +27,7 @@ Options:
   -s --type=<struct>  Indicate the type of structure to use of the config file [default if null].
   -a --append  Append the structure to the existing path.
   --version     Show version.
+  --config   Show the directories of the configuration file.
 
 Ejemplos
 
@@ -73,7 +75,7 @@ int main(int argc, const char** argv)
     map<string, docopt::value> args = docopt::docopt(USAGE,
                                                   { argv + 1, argv + argc },
                                                   true,               // show help if requested
-                                                  "Folder App Maker 0.3.0");  // version string
+                                                  "Folder App Maker 0.4.0");  // version string
 
 /*    for(auto const& arg : args) {
         cout << arg.first << ": " << arg.second << endl;
@@ -97,16 +99,6 @@ int main(int argc, const char** argv)
         return 0;
     }
 
-    //Se define el directorio final padre
-    dirPadre = dirBase + "\\" + args["<name>"].asString();
-
-    //Se verifica existencia de directorio padre
-    if(dirExists(dirPadre.c_str())==1 && args["--test"].asBool() == false && args["--append"].asBool() == false)
-    {
-        cout<<dirPadre<<endl<<"!Directorio padre existente!, se aborta proceso.";
-        return 0;
-    }
-
     //Se carga archivo de configuracion de directorios
     path = path+"dirs.xml";
     if(fileExists(path))
@@ -114,6 +106,23 @@ int main(int argc, const char** argv)
     else
     {
         cout<<"!Advertencia! Archivo config no encontrado:"<<endl<<path;
+        return 0;
+    }
+
+    if(args["--config"].asBool())
+    {
+        cout<<"Archivo de configuracion de rutas: "<<path<<endl;
+        doc.Print();
+        return 0;
+    }
+
+    //Se define el directorio final padre
+    dirPadre = dirBase + "\\" + args["<name>"].asString();
+
+    //Se verifica existencia de directorio padre
+    if(dirExists(dirPadre.c_str())==1 && args["--test"].asBool() == false && args["--append"].asBool() == false)
+    {
+        cout<<dirPadre<<endl<<"!Directorio padre existente!, se aborta proceso.";
         return 0;
     }
 
