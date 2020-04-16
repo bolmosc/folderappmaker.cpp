@@ -84,5 +84,8 @@ Licencia
         -docopt
 	docopt.cpp is licensed under the MIT License. For more details about license see the file LICENSE-MIT.txt
 
-        -CodeBlocks
-        Code::Blocksis distributed under the GNU General Public License, version 3, which means it can be used freely by anyone!
+	-CodeBlocks
+	Code::Blocksis distributed under the GNU General Public License, version 3, which means it can be used freely by anyone!
+
+	-TinyXML-2
+	TinyXML-2 is released under the zlib license
